@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/processes_graph"
+    app:startDestination="@id/processes_fragment">
+
+    <fragment
+        android:id="@+id/processes_fragment"
+        android:name="com.example.feature_processes.ProcessesFragment"
+        android:label="fragment_processes"
+        tools:layout="@layout/fragment_processes">
+        <argument android:name="processId"
+            app:argType="string"
+            app:nullable="true" />
+        <argument android:name="typeId"
+            app:argType="integer"
+            android:defaultValue="0"/>
+        <deepLink
+            app:uri="android-app://com.example.app/processes_fragment?processId={processId}&amp;typeId={typeId}" />
+    </fragment>
+</navigation>
