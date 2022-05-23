@@ -33,7 +33,13 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         navigatorHolder.setNavigator(navigator)
-        router.navigateTo(GlobalScreenNames.MainFeatureScreen)
+        initRootFragment()
+    }
+
+    private fun initRootFragment() {
+        if (supportFragmentManager.backStackEntryCount == 0) {
+            router.navigateTo(GlobalScreenNames.MainFeatureScreen)
+        }
     }
 
     override fun onPause() {
@@ -43,9 +49,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        if (supportFragmentManager.backStackEntryCount == 0) {
-            finish()
-        }
+        router.exit()
     }
 
 }
