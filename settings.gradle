@@ -16,3 +16,5 @@ rootProject.name = "Multimodule"
 include ':app'
 include ':feature-processes'
 include ':feature-main'
+include ':core'
+include ':module_injector'
