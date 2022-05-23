@@ -28,16 +28,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         AppComponent.get().inject(this)
+        initRootFragment(savedInstanceState)
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onResumeFragments() {
+        super.onResumeFragments()
         navigatorHolder.setNavigator(navigator)
-        initRootFragment()
     }
 
-    private fun initRootFragment() {
-        if (supportFragmentManager.backStackEntryCount == 0) {
+    private fun initRootFragment(savedInstanceState: Bundle?) {
+        if (savedInstanceState == null) {
             router.navigateTo(GlobalScreenNames.MainFeatureScreen)
         }
     }
